@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WiFi Card Generator</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-container">
+    <div class="card">
+      <h1 class="title">WiFi Card Generator</h1>
+      <p class="subtitle">Create and share your WiFi credentials effortlessly</p>
+      <form id="wifi-form" class="form" novalidate>
+        <div class="form-group">
+          <label for="wifi-name">WiFi Name (SSID)</label>
+          <div class="input-wrapper">
+            <span class="input-icon">📡</span>
+            <input type="text" id="wifi-name" placeholder="Enter WiFi name" aria-required="true" required>
+          </div>
+          <span class="error-message" id="wifi-name-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="wifi-password">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="wifi-password" placeholder="Enter WiFi password" aria-required="true">
+            <button type="button" id="toggle-password" class="toggle-password" aria-label="Toggle password visibility">👁️</button>
+          </div>
+          <span class="error-message" id="wifi-password-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="encryption-type">Encryption Type</label>
+          <select id="encryption-type" aria-label="Select encryption type">
+            <option value="WPA">WPA/WPA2</option>
+            <option value="WEP">WEP</option>
+            <option value="None">None</option>
+          </select>
+        </div>
+        <button type="submit" id="generate-btn" class="btn primary" disabled>Generate QR Code</button>
+      </form>
+      <div id="qr-container" class="qr-container">
+        <div id="loading" class="loading hidden">Generating...</div>
+        <div class="qr-wrapper hidden" id="qr-wrapper">
+          <canvas id="qr-code" aria-label="WiFi QR code for scanning"></canvas>
+          <p class="qr-caption">Scan to Connect</p>
+        </div>
+      </div>
+      <div class="credentials-preview" id="credentials-preview"></div>
+      <div class="actions">
+        <button id="copy-btn" class="btn secondary" disabled>Copy Credentials</button>
+        <button id="download-btn" class="btn secondary" disabled>Download QR Code</button>
+        <button id="clear-btn" class="btn secondary">Clear Form</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" defer></script>
+  <script src="script.js"></script>
+</body>
+</html>
